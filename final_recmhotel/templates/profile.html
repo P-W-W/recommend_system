@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<!--    <link rel="stylesheet" href="../static/css/index.css">-->
+<!--<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">-->
+<!--     <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.css')}}">-->
+<!--    <script src="{{url_for('static',filename='js/index.js')}}"></script>-->
+
+
+
+{% endblock %}
+
+{% block title %}
+new hotel
+{% endblock %}
+
+{% block main %}
+
+
+
+<div class="container" style="width: 70%">
+
+
+
+    <div id="accordion">
+
+        <div class="card">
+            <div class="card-header text-center">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                    Transaction record
+                </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table">
+                        
+                        <tbody class="thead-light">
+                            <tr>
+                                <th>publickey</th>
+                                <td>Lastname</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>privatekey</th>
+                                <td>Lastname</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>balance</th>
+                                <td>Lastname</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>blockNumber</th>
+                                <th>transactionIndex</th>
+                                <th>hotelid</th>
+                                <th>cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Mary</td>
+                                <td>Moe</td>
+                                <td>mary@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>July</td>
+                                <td>Dooley</td>
+                                <td>july@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header text-center">
+                <h4><a class="collapsed card-link text-success" data-toggle="collapse" href="#collapseThree">
+                        your hotel
+                    </a></h4>
+            </div>
+            <div id="collapseThree" class="collapse show" data-parent="#accordion">
+                <div class="card-body">
+                    {% for rent_hotel in rent_hotels %}
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="card-body">
+                                <div class="card-group">
+                                    <a class="navbar-brand" href="#" style="padding: 0px">
+                                        <img src="{{url_for('static',filename='images/doraemon.jpg')}}" alt="logo" style="width:150px;  ">
+                                    </a>
+                                    <div class="card bg-secondary text-white">
+                                        <div class="card-body text-center">
+                                            <a href="{{url_for('sendmoney',renthotel_id=rent_hotel._id)}}" class="text-white">
+                                                <h3 class="display-5" style="padding: 10px">{{rent_hotel.hotelname}}</h3>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="card bg-info text-white">
+                                        <div class="card-body">
+
+                                            <p class="display-5 text-white" style="margin: 0 auto">介紹:{{rent_hotel.introduction}}</p>
+                                            <p class="display-5 text-white" style="margin: 0 auto">價格:{{rent_hotel.price}}</p>
+                                            <a href="#" class=" text-white" style="margin: 0 auto">房東:{{rent_hotel.landlord}}</a>
+                                            <p><a href="{{url_for('sendmoney',renthotel_id=rent_hotel._id)}}" class=" text-white" style="margin: 0 auto">立即訂房</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="badge badge-primary badge-pill">評價:
+                                {% if rent_hotel['ratings']!=[] %}
+                                {{rent_hotel['ratings']}}
+                                {% endif %}
+                            </span>
+                        </li>
+                    </ul>
+
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+{% endblock %}

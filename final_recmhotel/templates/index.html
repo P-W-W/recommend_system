@@ -1,0 +1,110 @@
+{%extends 'base.html' %}
+
+{% block head %}
+<!--<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">-->
+<!--    <link rel="stylesheet" href="../static/css/index.css">-->
+<!--<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">-->
+<!--     <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.css')}}">-->
+<!--    <script src="{{url_for('static',filename='js/index.js')}}"></script>-->
+
+
+
+{% endblock %}
+
+{% block title %}
+hotel recommend
+{% endblock %}
+
+{% block main %}
+
+
+
+<div class="container" style="width: 70%">
+    <h2></h2>
+    {% for i in range(hotel_name|length) %}
+    <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+<!--    <a href="#" class="list-group-item">HOTEL</a>-->
+      <div class="card-body">
+            <div class="card-group">
+               <a class="navbar-brand" href="#" style="padding: 0px">
+                <img src="{{url_for('static',filename='images/doraemon.jpg')}}" alt="logo" style="width:150px; padding: 0px  " >
+                </a>
+                <div class="card bg-secondary text-white" >
+                   
+                    <div class="card-body text-center">
+                    
+<!--                    <p class="display-6">HOTEL</p>-->
+<!--                    <a href="/login"><img src="{{url_for('static',filename='images/doraemon.jpg')}}" class="rounded-circle" alt="" width="30%"></a>-->
+                  <a href="{{hotel_url[i]}}"  class="text-white"><h3 class="display-5"  >{{hotel_name[i]}}</h3>
+                    </a>
+                   
+                    </div>
+                </div>
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                         
+                        {% if i%2==0 %}
+                            <p class="display-5 text-white" >房型:  套房、家庭房、無菸客房</p>
+                            
+                        {%else%}
+                            <p class="display-5 text-white">房型:  套房、家庭房</p>
+                        {%endif%}
+                        <a href="#" class=" text-white">詳細</a>
+                        {% if session.account %}
+                            
+<!--                            <a href="#" class=" text-white" >{{session.account}}</a>-->
+                            <a href="#" class=" text-white" >立即訂房</a>
+                        {%endif%}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if i%3!=0 %}
+            <span class="badge badge-primary badge-pill">評價:{{i*0+4}}</span>
+        {%else%}
+            <span class="badge badge-primary badge-pill">評價:{{i*0+5}}</span>
+        {%endif%}
+    </li>
+  </ul>
+
+<!--
+{% for i in range(10) %}
+    <p>{{hotel_name[i]}}</p>
+{%endfor%}
+-->
+
+<!--
+    <div class="card bg-light text-dark">
+        <div class="card-body">
+            <div class="card-group">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body text-center">
+                    <a href="{{hotel_url[i]}}"  class="text-white"><h3 class="display-5">{{hotel_name[i]}}</h3>
+                    </a>
+-->
+<!--                    <a href="/login"><img src="{{url_for('static',filename='images/doraemon.jpg')}}" class="rounded" alt="" width="20%"></a>-->
+                   
+<!--
+                    </div>
+                </div>
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <p class="display-5 text-white">房型</p>
+                        <p class="display-5 text-white">房型</p>
+                    </div>
+                </div>
+                
+            </div>
+            <span class="badge badge-primary badge-pill">{{i+1}}</span>
+        </div>
+    </div>
+    <br>
+-->
+
+    {% endfor %} 
+
+</div>
+
+{% endblock %}

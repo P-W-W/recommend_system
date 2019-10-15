@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <link rel="stylesheet" href="{{url_for('static',filename='css/login_register.css')}}">
+
+<!--    <link rel="stylesheet" href="../static/css/index.css">-->
+<!--
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+     <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.css')}}">
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
+-->
+{% endblock %}
+
+{% block title %}
+   sendmoney
+{% endblock %}
+
+{% block main %}
+    
+
+  <h2 class="page-title">Sendmoney</h2>
+  <form action="" method="POST">
+
+   <div class="form-container">
+	
+        <div class="form-group">
+	
+	<div class="form-group">
+          <input type="text" class="form-control"  placeholder="Enter from publickey" name="frompublickey">
+        </div>
+
+	<div class="form-group">
+          <input type="text" class="form-control"  placeholder="Enter from privatekey" name="fromprivatekey">
+        </div>
+        
+        <div class="form-group">
+          <input type="text" class="form-control"  placeholder="send to(publickey)" name="topublickey">
+        </div>
+	<div class="form-group">
+          <input type="text" class="form-control"  placeholder="how much" name="vcoin">
+        </div>
+
+       <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">send</button>
+        </div>
+        </div>
+    </div>
+  </form>
+
+{% endblock %}

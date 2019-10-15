@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}">
+    
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="{{url_for('static',filename='images/doraemon.jpg')}}" alt="logo" style="width:100px;">
+  </a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Links -->
+   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+<!--
+    <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+-->
+  <ul class=" navbar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link text-warning active" href="/">首頁</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link text-warning" href="/">地區</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link text-warning" href="{{url_for('renthotel')}}">新旅館</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link text-warning" href="{{url_for('recommend')}}">個人推薦</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link text-warning" href="{{url_for('addhotel')}}">上傳旅館</a>
+    </li>
+  </ul>
+  
+   <ul class="navbar-nav ml-auto">
+    
+    {% if session.account %}
+        <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-white badge badge-primary" href="#" id="navbarDropdown" role="button " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session.account}}</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{url_for('logout')}}" >logout</a>
+        <a class="dropdown-item" href="{{url_for('profile')}}">profile</a>
+      </div>
+    </li>
+    {%else%}
+    <li class="nav-item">
+      <a class="nav-link text-white" href="{{url_for('login')}}">登入</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="{{url_for('register')}}">註冊</a>
+    </li>
+    {%endif%}
+    
+
+
+  </ul>
+</div>
+  
+</nav>
+    </div>
+    <div class="main">
+        {% block main %}{% endblock %}
+    </div>
+    
+</body>
+
+</html>
